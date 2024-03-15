@@ -1,15 +1,12 @@
-from mycroft import MycroftSkill, intent_file_handler
+from ovos_workshop.skills import OVOSSkill
+from ovos_workshop.decorators import intent_handler
 
 
-class ShakespeareInsult(MycroftSkill):
-    def __init__(self):
-        MycroftSkill.__init__(self)
+class ShakespeareInsult(OVOSSkill):
 
-    @intent_file_handler('shakespeareinsult.intent')
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    @intent_handler('shakespeareinsult.intent')
     def handle_shakespeareinsult(self, message):
         self.speak_dialog('shakespeareinsult')
-
-
-def create_skill():
-    return ShakespeareInsult()
-
